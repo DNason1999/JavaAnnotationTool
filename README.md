@@ -21,10 +21,10 @@ in a very python operable format.
 
 ## Notes
 
-[ ] The save and exit process will restart you at the last position as saved in the config.txt file
+- The save and exit process will restart you at the last position as saved in the config.txt file
   changing the "lastPathNum" will change the image you start / resume working on.
 
-[ ] Going back to previous images using the "Previous Image" button will DELETE the previous entry,
+- Going back to previous images using the "Previous Image" button will DELETE the previous entry,
     this means if you go back 10 images, you will have to reprocess those 10 images.
 
-[ ] If you skip an image, the output.txt will contain only a newline escape ("\n")
+- If you skip an image, the output.txt will contain only a newline escape ("\n")
