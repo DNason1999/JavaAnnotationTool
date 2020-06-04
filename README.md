@@ -2,7 +2,7 @@
 An image annotation tool in Java for platform independence 
 
 This tool is meant to be used for creating point annotations on an image set.
-These coordinates can be used to train a Machine Learning model.
+These coordinates can be used to train a CNN along with the original images.
 
 This tool is designed for use in python environments as the output.txt file will be
 in a very python operable format.
