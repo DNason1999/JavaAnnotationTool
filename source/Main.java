@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.util.ArrayList;
@@ -56,9 +57,6 @@ public class Main {
 		//Create list of paths 
 		ArrayList<String> paths = new ArrayList<>();
 		
-		String cwd = System.getProperty("user.dir");
-		System.out.println(cwd);
-		
 		//Set the config file path
 		String config_filename = "config.txt";
 		File config_file = new File(config_filename);
@@ -81,31 +79,19 @@ public class Main {
 				configuration.put(split[0], split[1]);
 			}
 			reader.close();
-		} catch (FileNotFoundException e1) {System.out.println("FilePaths.txt not found");}
+		} catch (FileNotFoundException e1) {System.out.println("config.txt not found");}
 		
 		// Set the paths_filename (filepaths.txt)
-		String paths_filename = "FilePaths.txt";
+		String images_path = "images/";
 		
 		// Create a file object from that path
-		File paths_file = new File(paths_filename);
+		File images_file = new File(images_path);
 		
-		// If the file path doesn't exist, print error and exit
-		if (!paths_file.exists()) {
-			System.out.println("FilePaths.txt not found");
-			return;
+		for (String s : images_file.list()) {
+			String out_path = images_path+s;
+			paths.add(out_path);
 		}
-		
-		// Read in the file paths to the list from the text file
-		try {
-			reader = new Scanner(paths_file);
-			while(reader.hasNextLine()) {
-				String path = reader.nextLine();
-				paths.add(path);
-			}
-			reader.close();
-		} catch (FileNotFoundException e1) {System.out.println("FilePaths.txt not found");}
-		
-		
+		JLabel count_display = new JLabel();
 		
 		// Create control panel
 		JPanel controls = new JPanel();
@@ -119,6 +105,7 @@ public class Main {
 		saveButton = new JButton("Save and Exit");
 		saveButton.addActionListener(actionListener);
 		// Add the two buttons
+		controls.add(count_display);
 		controls.add(prevButton);
 		controls.add(clearButton);
 		controls.add(nextButton);
@@ -143,6 +130,8 @@ public class Main {
 		
 		// Keep looping until the counter reaches the length of paths
 		while(counter < paths.size() &! exit) {	
+			count_display.setText("Current Progress: %"+Integer.toString((counter*100)/paths.size()));
+			controls.repaint();
 			
 			frame.changeImg(paths.get(counter));
 			
@@ -171,7 +160,6 @@ public class Main {
 			prev=false;
 			
 		};
-		System.out.println("Terminated");
 		
 		File outputFile;
 				
