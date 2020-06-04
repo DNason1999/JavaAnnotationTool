@@ -19,6 +19,14 @@ in a very python operable format.
 
 5. Once finished, the ouput.txt should be generated and you can process that however you want
 
+  #### Output example:
+  This will be the text output in a file called output.txt \
+ `0 [120,50]:[65,150]:\n`<br>
+ `1 [50,125]:[40,40]:[10,20]\n`<br>
+ `2 \n`<br>
+ `3 [12,150]:[70,10]:\n`
+
+  Line 2 is an example of a skipped image, where no points were placed and only a line break is output.
 ## Notes
 
 - The save and exit process will restart you at the last position as saved in the config.txt file
@@ -27,4 +35,6 @@ in a very python operable format.
 - Going back to previous images using the "Previous Image" button will DELETE the previous entry,
     this means if you go back 10 images, you will have to reprocess those 10 images.
 
-- If you skip an image, the output.txt will contain only a newline escape ("\n")
+- If you skip an image by not placing any points on the image, the output.txt will contain only a 
+    newline escape ("\n") for that line in the output.txt file corresponding to that image's position
+    in the list of images. 
